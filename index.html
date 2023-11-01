@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Practical</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    
+<div class="container">
+    <div class="row" id="cards">
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+fetch("https://dummyjson.com/products/category/smartphones").then((response)=>{
+
+return response.json();
+
+
+}).then((data)=>{
+    console.log(data)
+    var dataaa = data.products;
+    for (let index = 0; index <=dataaa.length; index++) {
+      
+
+let newdiv = document.createElement("div")
+
+newdiv.className = "col-md-5 mb-4"
+
+newimg = document.createElement("img")
+newimg.src = data.products[index].images
+
+newimg.className = "img-fluid"
+
+newimg.height = 300
+newimg.width = 300
+
+
+let titlee = document.createElement("h2")
+titlee.innerHTML = data.products[index].title
+
+
+let para = document.createElement("p")
+para.innerHTML = data.products[index].description
+
+let buttonnn = document.createElement("button")
+buttonnn.innerHTML = "Buy Now"
+
+buttonnn.className = "btn btn-danger"
+
+newdiv.append(newimg)
+newdiv.append(titlee)
+newdiv.append(para)
+newdiv.append(buttonnn)
+
+document.getElementById("cards").append(newdiv)
+ 
+
+
+}
+
+
+})
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
